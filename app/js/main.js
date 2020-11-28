@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
    } 
     
     const popup = new Popup({
-        targetSelector: '.nav-list',
-        popupSelector: '.explore-your-music',
-        closeBtnSelector: '.rectangle',
-        displayPopup: 'block',
+        targetSelector: '.popup-trigger',
+        popupSelector: '.popup',
+        closeBtnSelector: '.popup__close',
+        displayPopup: 'flex',
         popupTransition: 'all 1s linear',
         
         //autocloseTime: 10000, //ms

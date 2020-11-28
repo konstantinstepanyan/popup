@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Explore your music</title>
+    <title>Popup</title>
     <meta name="description" content="desc">
     <meta name="author" content="Konstantin">
     <meta name="keywords" content="Lorem ipsum">
@@ -22,60 +22,26 @@
 </head>
 
 <body>
-
-    <header class="nav-panel"> 
-            <ul class="nav-list">
-                <li class="nav-list__item logo-wrapper">
-                    <img class="logo" src="img/logo.svg" alt="logo">
-                    YOUR LOGO
-                </li>
-                <li class="nav-list__item home">HOME</li>
-                <li class="nav-list__item about">ABOUT</li>
-                <li class="nav-list__item package">PACKAGE</li>
-                <li class="nav-list__item galery">GALERY</li>
-                <li class="nav-list__item contact">CONTACT</li>
-            </ul>
-    </header>
-
-    <section class="explore-your-music">
-        <div class="text-wrapper">
-            <div class="explore-your-music__header-wrapper">
-                <span class="explore-your-music__explore-word">Explore</span> <br>
-                <span class="explore-your-music__your-word">Your</span> <br>
-                <span class="explore-your-music__music-word">MUSIC</span>
-            </div>
-            <div class="explore-your-music__description">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br> eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis <br> ipsum suspendisse ultrices gravida. Risus commodo viverra
-                </p>
-            </div>
-            <button class="btn">SEE MORE</button>
-        </div>
-        <div class="img-wrapper">
-            <img class="img-wrapper__img" src="img/man-with-record-player.png" alt="man-with-record-player">
-            <img class="arrows-reverse" src="img/three-arrows-reverse.svg" alt="three-arrows-reverse">
-            <span class="img-wrapper__text">
-            MUSIC <br>
-            MUSIC <br>
-            MUSIC <br>
-            MUSIC
-            </span>
-        </div>
+    <section class="main">
+        <button class="popup-trigger btn">open popup</button>
     </section>
-
-    <footer class="icons-wrapper">
-        <div class="icons">
-            <a class="icons__item" href=""><img class="icons__img" src="img/social-icons/twitter.svg" alt="twitter-link"></a>
-            <a class="icons__item" href=""><img class="icons__img" src="img/social-icons/facebook.svg" alt="facebook-link"></a>
-            <a class="icons__item" href=""><img class="icons__img" src="img/social-icons/instagram.svg" alt="instagram-link"></a>
+    
+    <div class="popup">
+        <div class="popup__window">   
+            <picture class="close-image">
+                <svg class="popup__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 365.71733 365"><g><path d="m356.339844 296.347656-286.613282-286.613281c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503906-12.5 32.769532 0 45.25l286.613281 286.613282c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082032c12.523438-12.480468 12.523438-32.75.019532-45.25zm0 0"></path><path d="m295.988281 9.734375-286.613281 286.613281c-12.5 12.5-12.5 32.769532 0 45.25l15.082031 15.082032c12.503907 12.5 32.769531 12.5 45.25 0l286.632813-286.59375c12.503906-12.5 12.503906-32.765626 0-45.246094l-15.082032-15.082032c-12.5-12.523437-32.765624-12.523437-45.269531-.023437zm0 0"></path></g></svg>
+            </picture>
+            <div class="popup__content-wrapper">
+                <div class="popup__text-wrapper">
+                    <h3 class="popup__header">Заголовок третьего уровня!</h3>
+                    <p class="popup__paragraph">Просто обычная рандомная строчка</p>
+                </div>
+                <input class="popup__input-name" type="text" placeholder="Имя">
+                <input class="popup__input-name" type="text" placeholder="Фамилия">
+            </div>        
         </div>
-        <div class="rectangle"></div>
-        <div class="circle-wrapper">
-                    <img class="circle-grey" src="img/grey-circle.svg" alt="grey circle">
-        </div>
-    </footer>
-
-    <script src="js/scripts.js"></script>
+    </div>
+    
 </body>
 
 </html>
