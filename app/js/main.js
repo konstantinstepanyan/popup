@@ -39,13 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
            this.closeBtn.addEventListener('touchstart', this.disappearance.bind(this));
            
            this.popupOverlay.addEventListener('click', (e)=> { 
-           this.popupOverlay.addEventListener('touchstart', (e)=> { 
                if(e.target.classList.contains(`${this.overlaySelector.slice(1)}`))
                { 
                this.disappearance();   
                }
            });
-           });
+           this.popupOverlay.addEventListener('touchstart', (e)=> { 
+               if(e.target.classList.contains(`${this.overlaySelector.slice(1)}`))
+               { 
+               this.disappearance();   
+               }
            });
        }
        
