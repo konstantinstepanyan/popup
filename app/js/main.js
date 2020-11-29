@@ -2,24 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
    class Popup {
        constructor(data) {
-           const {targetSelector, popupSelector, 
+           const {targetSelector, overlaySelector, windowSelector,
                   closeBtnSelector, displayPopup, 
-                  popupHeight, popupWidth, disappearingTime,
+                  popupHeight, popupWidth, 
+                  transitionTime, transitionType,
                   autocloseTime, closeOnMiss, closeOnKeys} = data;
            
            this.targetSelector = targetSelector;
-           this.popupSelector = popupSelector;
+           this.overlaySelector = overlaySelector;
+           this.windowSelector = windowSelector;
+           this.closeBtnSelector = closeBtnSelector;
            this.displayPopup = displayPopup;
            this.popupHeight = popupHeight;
            this.popupWidth = popupWidth;
-           this.disappearingTime = disappearingTime;
+           this.transitionTime = transitionTime;
+           this.transitionType = transitionType || 'ease';
            this.autocloseTime = autocloseTime;
-           this.closeBtnSelector = closeBtnSelector;
            this.closeOnMiss = closeOnMiss;
            this.closeOnKeys = closeOnKeys;
            
            this.popupTrigger = document.querySelector(`${this.targetSelector}`);
-           this.popupWindow = document.querySelector(`${this.popupSelector}`);
+           this.popupOverlay = document.querySelector(`${this.overlaySelector}`);
+           this.popupWindow = document.querySelector(`${this.windowSelector}`);
            this.closeBtn = document.querySelector(`${this.closeBtnSelector}`);
            
            this.init();
@@ -34,32 +38,43 @@ document.addEventListener('DOMContentLoaded', () => {
            this.closeBtn.addEventListener('click', this.disappearance.bind(this));
            this.closeBtn.addEventListener('touchstart', this.disappearance.bind(this));
            
+           this.popupOverlay.addEventListener('click', (e)=> { 
+           this.popupOverlay.addEventListener('touchstart', (e)=> { 
+               if(e.target.classList.contains(`${this.overlaySelector.slice(1)}`))
+               { 
+               this.disappearance();   
+               }
+           });
+           });
+           });
        }
        
        appearance(){
-           this.popupWindow.style.height = this.popupHeight;
-           this.popupWindow.style.width = this.popupWidth;
-           this.popupWindow.style.opacity = 1;
-           this.popupWindow.style.transition = `opacity ${this.disappearingTime/1000}s ease, height 0s ease 0s`;
+           this.popupOverlay.style.height = this.popupHeight;
+           this.popupOverlay.style.width = this.popupWidth;
+           this.popupOverlay.style.opacity = 1;
+           this.popupOverlay.style.transition = `opacity ${this.transitionTime/1000}s ${this.transitionType}, height 0s ${this.transitionType} 0s`;
        }
          
        disappearance(){
-           this.popupWindow.style.height = 0;
-           this.popupWindow.style.opacity = 0;
-           this.popupWindow.style.transition = `opacity ${this.disappearingTime/1000}s ease, height 0s ease ${this.disappearingTime/1000}s`;
+           this.popupOverlay.style.height = 0;
+           this.popupOverlay.style.opacity = 0;
+           this.popupOverlay.style.transition = `opacity ${this.transitionTime/1000}s ${this.transitionType}, height 0s ${this.transitionType} ${this.transitionTime/1000}s`;
            
        }
-              
+               
    }  
      
     const popup = new Popup({
         targetSelector: '.popup-trigger',
-        popupSelector: '.popup',
+        overlaySelector: '.popup',
+        windowSelector: '.popup__window',
         closeBtnSelector: '.popup__close',
         displayPopup: 'flex',
         popupHeight: '100vh',
         popupWidth: '100%',
-        disappearingTime: 1000, //ms
+        transitionTime: 1000, //ms
+        transitionType: 'linear', //default val: ease
         //autocloseTime: 10000, //ms
         closeOnMiss: true, 
         closeOnKeys: ''
