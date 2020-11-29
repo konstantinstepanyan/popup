@@ -385,13 +385,8 @@ html {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
   top: 0;
   left: 0;
-  -webkit-transition: all 1s linear 0s;
-  -o-transition: all 1s linear 0s;
-  transition: all 1s linear 0s;
   opacity: 1;
   background: #000;
   z-index: 999;
