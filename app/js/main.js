@@ -3,16 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
    class Popup {
        constructor(data) {
            const {targetSelector, popupSelector, 
-                  displayPopup, popupHeight, popupWidth, 
-                  popupTransition, autocloseTime,
-                  closeBtnSelector, closeOnMiss, closeOnKeys} = data;
+                  closeBtnSelector, displayPopup, 
+                  popupHeight, popupWidth, disappearingTime,
+                  autocloseTime, closeOnMiss, closeOnKeys} = data;
            
            this.targetSelector = targetSelector;
            this.popupSelector = popupSelector;
            this.displayPopup = displayPopup;
            this.popupHeight = popupHeight;
            this.popupWidth = popupWidth;
-           this.popupTransition = popupTransition;
+           this.disappearingTime = disappearingTime;
            this.autocloseTime = autocloseTime;
            this.closeBtnSelector = closeBtnSelector;
            this.closeOnMiss = closeOnMiss;
@@ -36,23 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
            
        }
        
-       
        appearance(){
            this.popupWindow.style.height = this.popupHeight;
            this.popupWindow.style.width = this.popupWidth;
            this.popupWindow.style.opacity = 1;
-           this.popupWindow.style.transition = `opacity 2s ease, height 0s ease 0s`;
+           this.popupWindow.style.transition = `opacity ${this.disappearingTime/1000}s ease, height 0s ease 0s`;
        }
-       
-       
+         
        disappearance(){
            this.popupWindow.style.height = 0;
            this.popupWindow.style.opacity = 0;
-           this.popupWindow.style.transition = `opacity 2s ease, height 0s ease 2s`;
+           this.popupWindow.style.transition = `opacity ${this.disappearingTime/1000}s ease, height 0s ease ${this.disappearingTime/1000}s`;
+           
        }
               
-   } 
-    
+   }  
+     
     const popup = new Popup({
         targetSelector: '.popup-trigger',
         popupSelector: '.popup',
@@ -60,8 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
         displayPopup: 'flex',
         popupHeight: '100vh',
         popupWidth: '100%',
+        disappearingTime: 1000, //ms
         //autocloseTime: 10000, //ms
-        closeOnMiss: true,
+        closeOnMiss: true, 
         closeOnKeys: ''
         });
 });
