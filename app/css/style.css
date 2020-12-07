@@ -572,6 +572,7 @@ html {
 }
 
 .popup {
+  overflow: hidden;
   position: absolute;
   display: -webkit-box;
   display: -webkit-flex;
